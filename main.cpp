@@ -10,13 +10,17 @@ int main()
 	shop.ReturnShopList();
 	std::cout << "\n";
 
-	Cart userCart;
-	Item item1(90.00, "Shoes");
-	Item item2(130.50, "Headphones");
+	std::string selectedItem;
+	size_t selectedQuantity;
+	std::cout << "Enter name of item to add to cart: ";
+	std::cin >> selectedItem;
+	std::cout << "Enter the quantity that you wish to purchase: ";
+	std::cin >> selectedQuantity;
 
-	userCart.AddItem(1, item1);
-	userCart.AddItem(2, item2);
-	userCart.AddItem(2, item1);
+	// Check item in shop, if it's there, return it
+	Cart userCart;
+	userCart.AddItem(selectedQuantity, shop.ReturnShopItem(selectedItem));
+
 	std::cout << "\n";
 
 	std::cout << "YOUR CART" << "\n";

@@ -6,6 +6,7 @@ private:
 public:
 	Shop();
 	void ReturnShopList();
+	Item ReturnShopItem(std::string itemIn);
 };
 
 Shop::Shop()
@@ -23,4 +24,11 @@ void Shop::ReturnShopList()
 	{
 		std::cout << "Item: " << i.ReturnName() << ", value: $" << i.ReturnValue() << "\n";
 	}
+}
+
+// TOOD: Come up with proper return if item does not exist in store
+Item Shop::ReturnShopItem(std::string itemNameIn)
+{
+	auto it = std::find_if(shopList.begin(), shopList.end(), [&itemNameIn](const Item& item) { return item.ReturnName() == itemNameIn; });
+	return *it;
 }
