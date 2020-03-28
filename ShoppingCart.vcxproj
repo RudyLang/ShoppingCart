@@ -154,6 +154,7 @@
     <ClInclude Include="Cart.h" />
     <ClInclude Include="Item.h" />
     <ClInclude Include="pch.h" />
+    <ClInclude Include="Shop.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">

@@ -9,7 +9,7 @@ private:
 	std::size_t size;
 	std::size_t items;
 
-	std::list<std::pair<std::size_t, Item>> contents; // List of pairs. First value pair specifies item quantity
+	std::list<std::pair<std::size_t, Item>> contents; // List of pairs. First value of pair specifies item quantity
 
 public:
 	Cart();
@@ -30,17 +30,21 @@ Cart::Cart()
 void Cart::AddItem(size_t quantityIn, Item itemIn)
 {
 	// Using std::find_if algorithm with overloaded operator == for Item class
-	// I had to get fancy with find_if in order to search through the pairs
+	// Checks to see if the second property of the pair matches the item being added; disregards quantity at this point
 	auto it = std::find_if(contents.begin(), contents.end(), [&itemIn](const std::pair<std::size_t, Item>& p) { return p.second == itemIn; });
 
-	if (it == contents.end()) // If iterator points to the end of the list then the item doesn't exist -> add as is
+	// If iterator points to the end of the list then the item doesn't exist, add to end of list
+	// Else, increment value where iterator points
+	if (it == contents.end())
 	{
 		std::pair<size_t, Item> newItem(quantityIn, itemIn);
 		contents.push_back(newItem);
+		std::cout << std::to_string(quantityIn) << " " << itemIn.ReturnName() << " added to cart." << "\n";
 	}
 	else
 	{
-		it->first++; // This is dumb right now, need to incoming quantity and add that
+		it->first += quantityIn;
+		std::cout << std::to_string(quantityIn) << " " << itemIn.ReturnName() << " added to cart." << "\n";
 	}
 }
 
