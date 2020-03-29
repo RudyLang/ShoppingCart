@@ -53,9 +53,18 @@ void Cart::ReturnAllItems()
 	std::cout << std::fixed;
 	std::cout << std::setprecision(2);
 
-	for (auto const& i : contents)
+	// If the cart is empty, tell the user.
+	// Else, iterate through and print it's contents.
+	if (contents.empty())
 	{
-		std::cout << "Item: " << i.second.ReturnName() << ", value: $" << i.second.ReturnValue() << ", Quantity: " << i.first << "\n";
+		std::cout << "Nothing in your cart!" << "\n";
+	}
+	else
+	{
+		for (auto const& i : contents)
+		{
+			std::cout << "Item: " << i.second.ReturnName() << ", Value: $" << i.second.ReturnValue() << ", Quantity: " << i.first << "\n";
+		}
 	}
 }
 

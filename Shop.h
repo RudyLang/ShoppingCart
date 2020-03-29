@@ -26,9 +26,19 @@ void Shop::ReturnShopList()
 	}
 }
 
-// TOOD: Come up with proper return if item does not exist in store
+// If item exists, return a reference to that item.
+// If it does not exist, return an empty item.
 Item Shop::ReturnShopItem(std::string itemNameIn)
 {
 	auto it = std::find_if(shopList.begin(), shopList.end(), [&itemNameIn](const Item& item) { return item.ReturnName() == itemNameIn; });
-	return *it;
+
+	if (it == shopList.end())
+	{
+		Item emptyItem;
+		return emptyItem;
+	}
+	else
+	{
+		return *it;
+	}
 }
