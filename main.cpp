@@ -3,6 +3,7 @@
 #include <limits>
 #include "Cart.h"
 #include "Shop.h"
+#include "Helpers.h"
 
 void Shopping()
 {
@@ -24,14 +25,14 @@ void Shopping()
 
 		while (1)
 		{
-			if (std::cin.fail())
+			if (!helpers::IsAlpha(selectedItem))
 			{
 				std::cin.clear();
 				std::cout << "You did not enter a valid name, please try again: ";
 				std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 				std::cin >> selectedItem;
 			}
-			if (!std::cin.fail())
+			else
 			{
 				break;
 			}
