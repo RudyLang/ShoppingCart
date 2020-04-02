@@ -43,14 +43,14 @@ void Shopping()
 
 		while (1)
 		{
-			if (std::cin.fail())
+			if (!helpers::isNumeric(std::to_string(selectedQuantity)))
 			{
 				std::cin.clear();
 				std::cout << "You did not enter a valid number, please try again: ";
 				std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 				std::cin >> selectedQuantity;
 			}
-			if (!std::cin.fail())
+			else
 			{
 				break;
 			}
