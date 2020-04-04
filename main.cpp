@@ -10,16 +10,25 @@ void Shopping()
 	char choice;
 	bool run = true;
 
+	// Instantiate our shop and cart classes
+	Shop shop;
+	Cart userCart;
+
 	while (run)
 	{
-		Shop shop;
+		// Print Shop Inventory
 		std::cout << "STORE FRONT" << "\n";
 		shop.ReturnShopList();
 		std::cout << "\n";
 
-		std::string selectedItem;
-		uint8_t selectedQuantity;
+		// Initialize input parameters
+		std::string selectedItem = "";
+		int selectedQuantity = 0;
 
+		// Clear input
+		std::cin.clear();
+
+		// Request user to enter exact name of item
 		std::cout << "Enter name of item to add to cart: ";
 		std::cin >> selectedItem;
 
@@ -38,8 +47,12 @@ void Shopping()
 			}
 		}
 		
+		// Clear input
+		std::cin.clear();
+
+		// Request user to enter quantity of item
 		std::cout << "Enter the quantity that you wish to purchase: ";
-		std::cin >> selectedQuantity; //TODO: Handle user entering anything other than uint
+		std::cin >> selectedQuantity;
 
 		while (1)
 		{
@@ -59,7 +72,6 @@ void Shopping()
 		// Check the shop for enter item and quanity.
 		// If the item and quantity are valid, simply add it to the user's cart.
 		// Else, throw an error to the user.
-		Cart userCart;
 		Item chosenItem = shop.ReturnShopItem(selectedItem);
 		if (chosenItem.ReturnName() == "")
 		{

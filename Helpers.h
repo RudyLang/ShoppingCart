@@ -2,7 +2,7 @@
 
 namespace helpers
 {
-	bool IsAlpha(std::string& stringIn)
+	bool IsAlpha(std::string stringIn)
 	{
 		for (char& c : stringIn)
 		{
