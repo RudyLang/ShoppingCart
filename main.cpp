@@ -96,6 +96,11 @@ void Shopping()
 			run = false;
 		}
 	}
+
+	// Print Receipt
+	std::cout << "\n";
+	std::cout << "YOUR RECEIPT" << "\n";
+	userCart.CheckOut();
 }
 
 

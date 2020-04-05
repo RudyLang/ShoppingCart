@@ -8,6 +8,7 @@ class Cart
 private:
 	int size;
 	int items;
+	float total;
 
 	std::list<std::pair<int, Item>> contents; // List of pairs. First value of pair specifies item quantity
 
@@ -15,6 +16,8 @@ public:
 	Cart();
 	void AddItem(int quantityIn, Item itemIn);
 	void ReturnAllItems();
+	float CalculateTotal();
+	void CheckOut();
 	//~Cart();
 };
 
@@ -22,6 +25,7 @@ Cart::Cart()
 {
 	size = 10;
 	items = 0;
+	total = 0.0;
 }
 
 // Using 'quantity to stack multiple items in cart
@@ -66,6 +70,25 @@ void Cart::ReturnAllItems()
 			std::cout << "Item: " << i.second.ReturnName() << ", Value: $" << i.second.ReturnValue() << ", Quantity: " << i.first << "\n";
 		}
 	}
+}
+
+float Cart::CalculateTotal()
+{
+	total = 0.0;
+
+	for (auto const& i : contents)
+	{
+		total += i.second.ReturnValue() * i.first; // Value of item multiplied by it's quantity, summed
+	}
+
+	return total;
+}
+
+void Cart::CheckOut()
+{
+	ReturnAllItems();
+
+	std::cout << "Your total is: $" << CalculateTotal() << "\n";
 }
 
 /*Cart::~Cart()
