@@ -28,6 +28,32 @@ void Shopping()
 		// Clear input
 		std::cin.clear();
 
+		// If there's something in the cart, as user if they'd like to empty it,
+		// or if they'd like to add more items?
+		if (userCart.CalculateTotal() > 0.0)
+		{
+			char emptyCart = 'n';
+			std::cin.clear();
+			std::cout << "Would you like to empty your cart? (y/n): ";
+			std::cin >> emptyCart;
+
+			if (emptyCart == 'y' || emptyCart == 'Y')
+			{
+				userCart.EmptyCart();
+			}
+
+			char continueShopping = 'y';
+			std::cin.clear();
+			std::cout << "Would you to continue shopping? (y/n): ";
+			std::cin >> continueShopping;
+
+			if (continueShopping == 'n' || continueShopping == 'N')
+			{
+				run = false;
+				break;
+			}
+		}
+
 		// Request user to enter exact name of item
 		std::cout << "Enter name of item to add to cart: ";
 		std::cin >> selectedItem;

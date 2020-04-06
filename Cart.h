@@ -18,6 +18,7 @@ public:
 	void ReturnAllItems();
 	float CalculateTotal();
 	void CheckOut();
+	void EmptyCart();
 	//~Cart();
 };
 
@@ -89,6 +90,12 @@ void Cart::CheckOut()
 	ReturnAllItems();
 
 	std::cout << "Your total is: $" << CalculateTotal() << "\n";
+}
+
+void Cart::EmptyCart()
+{
+	contents.clear();
+	std::cout << "Cart Emptied" << "\n";
 }
 
 /*Cart::~Cart()

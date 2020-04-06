@@ -11,8 +11,11 @@ public:
 
 Shop::Shop()
 {
-	shopList.push_back(Item(90.00, "Shoes"));
-	shopList.push_back(Item(130.50, "Headphones"));
+	shopList.push_back(Item(90.00, "Sword"));
+	shopList.push_back(Item(130.50, "Shield"));
+	shopList.push_back(Item(50.20, "Helmet"));
+	shopList.push_back(Item(30.50, "Robe"));
+	shopList.push_back(Item(80.70, "Wand"));
 }
 
 void Shop::ReturnShopList()
@@ -22,7 +25,7 @@ void Shop::ReturnShopList()
 
 	for (auto const& i : shopList)
 	{
-		std::cout << "Item: " << i.ReturnName() << ", value: $" << i.ReturnValue() << "\n";
+		std::cout << "Item: " << i.ReturnName() << ", Value: $" << i.ReturnValue() << "\n";
 	}
 }
 
